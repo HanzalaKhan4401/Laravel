@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Custom;
+use App\Http\Controllers\action;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,4 +35,12 @@ use App\Http\Controllers\Custom;
 //     return view('logout');
 // });
 
-Route::get('/home', [Custom::class, 'index']);
+// Route::get('/home', [Custom::class, 'index']);
+
+route::controller(Custom::class)->group(function(){
+    route::get('/', 'index')->name("home");
+    route::get('/about', 'about')->name("about");
+    // route::get('/contact', 'contact')->name("contact");
+});
+
+route::get('/contact', action::class)->name('contact');
